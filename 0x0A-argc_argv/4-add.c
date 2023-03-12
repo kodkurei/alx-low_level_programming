@@ -1,49 +1,41 @@
+#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
 #include <string.h>
-/**
- * check_num - check if string contains only digits
- * @str: input string
- *
- * Return: 1 if string contains only digits, 0 otherwise
- */
-int check_num(const char *str)
-{
-	unsigned int len = strlen(str);
 
-	for (unsigned int i = 0; i < len; i++)
-	{
-		if (!isdigit(str[i]))
-		{
-			return (0);
-		}
-	}
-	return (1);
-}
 /**
- * main - sum command-line arguments that are numbers
- * @argc: number of command-line arguments
- * @argv: array of command-line arguments
+ * @argc: argument count
+ * @argv: argument vector
  *
- * Return: 0 on success, 1 on error
+ * Return: Always zero
  */
 int main(int argc, char *argv[])
 {
-	int sum = 0;
+	int i;
+	unsigned int k, sum = 0;
+	char *e;
 
-	for (int i = 1; i < argc; i++)
+	if (argc > 1)
 	{
-		if (check_num(argv[i]))
+		for (i = 1; 1 < argc; i++)
 		{
-			sum += atoi(argv[i]);
+			e = argv[i];
+			for (k = 0; k < strlen(e); k++)
+			{
+				if (e[k] < 48 || e[k] > 57)
+				{
+					printf("Error\n0");
+					return (1);
+				}
+			}
+			sum += atoi(e);
+			e++;
 		}
-		else
-		{
-			printf("Error\n");
-			return (1);
-		}
+		printf("%d\n", sum);
 	}
-	printf("%d\n", sum);
+	else
+	{
+		printf("0\n");
+	}
 	return (0);
 }
