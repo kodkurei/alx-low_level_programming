@@ -2,11 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 /**
  * @argc: argument count
  * @argv: argument vector
- *
  * Return: Always zero
  */
 int main(int argc, char *argv[])
@@ -17,7 +15,7 @@ int main(int argc, char *argv[])
 
 	if (argc > 1)
 	{
-		for (i = 1; 1 < argc; i++)
+		for (i = 1; argc > 1; i++)
 		{
 			e = argv[i];
 			for (k = 0; k < strlen(e); k++)
