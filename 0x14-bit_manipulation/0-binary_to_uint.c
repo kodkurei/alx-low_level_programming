@@ -8,15 +8,26 @@
  */
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int val = 0;
+	unsigned int result = 0;
 
 	if (b == NULL)
 		return (0);
-	for (int i = 0; b[i] != '\0'; i++)
+	while (*b != '\0')
 	{
-		if (b[i] < '0' || b[i] > '1')
+		if (*b != '0' && *b != '1')
 			return (0);
-		val = val * 2 + (b[i] - '0');
+		result = (result << 1) | (*b++ - '0');
 	}
-	return (val);
+	return (result);
+}
+int main(void)
+{
+	const char *var1 = "10101010";
+	const char *var2 = "1000012";
+	const char *var3 = "1000010";
+
+	printf("%s = %u\n", binary1, binary_to_uint(var1));
+	printf("%s = %u\n", binary2, binary_to_uint(var2));
+	printf("%s = %u\n", binary3, binary_to_uint(var3));
+	return (0);
 }
